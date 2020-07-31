@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="all"  @click="getchild">
+        <tem></tem>
+    </div>
+
+    <template id="tem">
+        <div>
+            <h1>我是子组件~~~</h1>
+        </div>
+    </template>
+    <script>
+        vm = new Vue({
+            el: "#all",
+            methods: {
+                getchild() {
+                    console.log('123');
+                    console.log("1---"+this.name);
+                    this.$children[0].name="baby"        
+                    console.log("2---"+this.$children[0].getname());
+                }
+            },
+            data: {
+                name:"parent"
+            },
+            components: {
+            tem:{
+                template: "#tem",
+                data() {
+                    return {
+                        name: "child",
+                        age: 19
+                    }
+                },
+                methods: {
+                    getname() {
+                       this.$parent.name="mammy"
+                       return this.$parent.name
+                    }
+                }
+            }
+        }
+        })
+        
+    </script>
+</body>
+
+</html>

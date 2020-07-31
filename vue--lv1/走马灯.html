@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="all">
+        <input type="button" @click="lang" value="开始">
+        <input type="button" @click="stop" value="暂停">
+        <div>{{msg}}</div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#all",
+            data: {
+                msg: "酸甜苦辣咸",
+                i:null
+            },
+            methods: {
+                lang() {
+                    if(this.i!=null) return;
+                     this.i = setInterval(() => {
+                        let start = this.msg.substring(0, 1);
+                        let end = this.msg.substring(1);
+                        this.msg = end + start;
+                    },500);
+                },
+                stop(){
+                    clearInterval(this.i);
+                    this.i=null;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

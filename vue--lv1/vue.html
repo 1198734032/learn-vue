@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<style>
+    .red{
+        color:red
+    }
+    .yellow{
+        color: yellow;
+    }
+</style>
+<body>
+    <!-- <div id="app1">{{content}}</div> -->
+
+    <!-- <div id="todoList">
+        <input type="text" v-model="iptValue">
+        <button v-on:click="add">Add</button>
+        <ul>
+            <!-- <li v-for="item in list">{{item}}</li> -->
+    <!-- <todo-list v-bind:content="item" v-bind:index="index" v-for="(item,index) in list" @delete="deletee">
+            </todo-list>
+        </ul>
+    </div>  -->
+
+    <!-- <div id="app3" @click="handle" :class="{active:isActive}">hi</div> -->
+
+    <!-- <div id="app4">
+        <counter @change="change" ref="a"></counter>
+        <counter @change="change" ref="b"></counter>
+        <div>{{all}}</div>
+    </div> -->
+
+    <!-- <div id="app5">
+        <child>
+            <template slot-scope="props">
+                <li>{{props.it}}</li>
+            </template>
+        </child>
+    </div> -->
+
+    <div id="app6">
+        <div :class={"red":style}>123123123</div>
+    </div>
+    <script>
+        {
+
+            // let app1=new Vue({
+            //     el:'#app1',
+            //     data:{
+            //         content:'1'
+            //     }
+            // })
+            // setInterval(() => {
+            //     app1.$data.content++;
+            // }, 1000);
+
+
+            // let TodoList = {
+            //     props: ["content", "index"],
+            //     template: "<li v-on:click='handle'>{{content}}</li>",
+            //     methods: {
+            //         handle: function () {
+            //             this.$emit("delete", this.index);
+            //         }
+            //     }
+            // }
+            // let todoList = new Vue({
+            //     el: '#todoList',
+            //     components: {
+            //         TodoList: TodoList
+            //     },
+            //     data: {
+            //         list: ["hi", "hellow"],
+            //         iptValue: ""
+            //     },
+            //     methods: {
+            //         add: function () {
+            //             this.list.push(this.iptValue);
+            //             this.iptValue = "";
+            //         },
+            //         deletee: function (index) {
+            //             this.list.splice(index, 1)
+            //         }
+            //     }
+            // })
+
+            // let vm=new Vue({
+            //     el:"#app3",
+            //     data:{
+            //         isActive:false
+            //     },
+            //     methods:{
+            //         handle:function(){
+            //             this.isActive=!this.isActive;
+            //         }
+            //     }
+            // })
+        }
+
+
+      {  
+        //   Vue.component("child", {
+        //     data: function () {
+        //         return {
+        //             num: [1, 2, 3]
+        //         }
+        //     },
+        //     template: `<div><slot :it=item v-for="item of num"></slot> </div>`
+        // })
+        // let vm = new Vue({
+        //     el: "#app5"
+        // })
+    }
+    
+    let vm=new Vue({
+        el:"#app6",
+        data:{
+            style:"ture"
+        }
+    })
+    </script>
+</body>
+
+</html>

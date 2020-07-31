@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="all">
+        <input type="text" v-model="i1" >
+        <select v-model="opt">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="text" v-model="i2" >
+        <input type="button" value="=" @click="show">
+        <input type="text" :value="res">
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#all",
+            data: {
+                i1: 0,
+                i2: 0,
+                res: 0,
+                opt: "+"
+            },
+            methods: {
+                show() {
+                    switch (this.opt) {
+                        case "+":
+                            this.res = this.i1 + this.i2;
+                            break;
+                        case "-":
+                            this.res = this.i1 - this.i2;
+                            break;
+                        case "*":
+                            this.res = this.i1 * this.i2;
+                            break;
+                        case "/":
+                            this.res = this.i1 / this.i2;
+                            break;
+                        default:
+                            this.res="出错啦"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

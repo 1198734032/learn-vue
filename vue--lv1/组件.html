@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="all">
+        <!-- <c2></c2> -->
+        <tem></tem>
+        <tem></tem>
+        <tem></tem>
+    </div>
+
+    <!-- 方法2 -->
+    <!-- <script type="text/x-template" id="tem">
+        <div>
+            <h1>ahha</h1>
+        </div>
+    </script> -->
+
+
+    <!-- 方法三 -->  
+    <template id="tem">
+        <div>
+            <h1>ahahahahhah</h1>
+        </div>
+    </template>
+
+    <script>
+        //注意：组件不能访问VUE实例
+        //方法1：
+        //注意：组件必须被div包裹
+        let c1=Vue.extend({
+            template:`<div>
+            <p>123123</p>
+            </div>`
+        })
+        let c2=Vue.extend({
+            template:`
+            <div>
+            <p>000000000</p>
+            <c></c>
+            </div>        
+            `,
+            components:{
+                c:c1
+            }
+        })
+        vm = new Vue({
+            el: "#all",
+            components:{
+                c2:c2
+            }
+        })
+
+        //方法2、3：
+        Vue.component("tem",{
+            template:"#tem",
+            data(){
+                return{}
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="all">
+        <tem :cnum="pnum" @change="change"></tem>
+    </div>
+    <template id="tem">
+        <div>
+            <div>{{cnum}}</div>
+            <input type="text" @keyup="cinput" :value="copy">
+        </div>
+    </template>
+    <script>
+        let cpn={
+            template:"#tem",
+            data(){
+                return{
+                    copy:this.cnum
+                }
+            },
+            props:{
+                cnum:{
+                    type:Number,
+                    default:10
+                }
+            },
+            methods:{
+                cinput(){   
+                    this.copy=event.target.value ;
+                   this.$emit("change",this.copy)
+                }
+            }
+        }
+        vm = new Vue({
+            el: "#all",
+            methods: {
+             change(o){
+                 this.pnum=Number(o)               
+             }
+            },
+            data: {
+                pnum:0
+            },
+            components:{
+                tem:cpn
+            },
+        })
+    </script>
+</body>
+</html>

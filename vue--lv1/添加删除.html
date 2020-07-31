@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<div id="all">
+    <div>
+        id:<input type="text" v-model="id">
+        name:<input type="text" v-model="name" @keyup.enter="add">
+        <input type="submit" value="add" @click="add">
+        <input type="text" v-model="key">
+        <input type="button" @click="search(key)">
+    </div>
+
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>time</td>
+            <td>option</td>
+        </tr>
+        <tr v-for="item in search(key)" :key="item.id">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.time}}</td>
+            <td @click.prevent="del(item.id)" v-Color="'pink'">删除</td>
+        </tr>
+    </table>
+    
+</div>
+
+<body>
+    <script>
+        //自定义属性
+        //必须写在 new Vue 之前 
+         Vue.directive('Color',{
+            inserted:function(el,color){
+                el.addEventListener("mouseenter",()=>{
+                    //el.style.color="blue"
+                    el.style.color=color.value;
+                })
+                el.addEventListener("mouseout",()=>{
+                    el.style.color="black"
+                })
+            }
+        })
+
+        let vm = new Vue({
+            el: "#all",
+            data: {
+                id: "",
+                name: "",
+                key:"",
+                list: [
+                    { id: 1, name: "张三", time: new Date() },
+                    { id: 2, name: "李四", time: new Date() },
+                    { id: 3, name: "王麻子", time: new Date() },
+                    { id: 4, name: "张三", time: new Date() },
+                    { id: 5, name: "李四", time: new Date() },
+                    { id: 6, name: "王麻子", time: new Date() }
+                ]
+            },
+            methods: {
+                add() {
+                    let newstu = {
+                        name: this.name,
+                        id: this.id,
+                        time: new Date()
+                    };
+                    this.list.push(newstu);
+                    this.id=this.name="";
+
+                },
+                del(id) {
+                    let i = this.list.findIndex((item, index) => item.id==id)
+                    console.log(i)
+                    this.list.splice(i, 1);
+                },
+                search(key){        
+                    // let arr=[];          
+                    // this.list.forEach(element => {
+                    //     if(element.name.indexOf(key)!=-1){
+                    //        arr.push(element)
+                    //     }
+                    // });
+
+                    let arr=this.list.filter(item=>{
+                        if(item.name.includes(key)) return item
+                    })
+                    return arr
+                }
+            },
+            //私有指令
+            directive:{
+                // color:{
+                //     bind:function(){...},
+                //     updata:function(){...}
+                // }
+
+                //color:function(){...}  等同于写到了 bind 和 updata 里面
+            },
+            //私有过滤器
+            filter:{}
+        })
+
+       
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="all">
+        <tem :c-day="day" :c-night="night" @e="click" ></tem>
+    </div>
+
+    <template id="tem">
+        <div>
+            <div>{{cDay}}</div>
+            <div @click="clicknight(cNight)">{{cNight}}</div>
+        </div>
+    </template>
+    <script>
+        Vue.component("tem", {
+            template: "#tem",
+            //props: ['cday', 'cnight'],
+            props:{
+                cDay:Number,
+                // cnight:Number
+                cNight:{
+                    type:Number,
+                    default:30 //默认值
+                    // 对象的默认值是函数
+                    // default(){
+                    //     return{ }
+                    // }
+                }
+            },
+            methods:{
+                clicknight(o){
+                    this.$emit("e",o) //触发父级的 e 事件
+                }
+            },
+            data() {
+                return {}
+            }
+        })
+        vm = new Vue({
+            el: "#all",
+            method: {
+
+            },
+            data: {
+                day: 10,
+                night: 20
+            },
+            methods:{
+                click(o){
+                    console.log(`${o} has be clicked`)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
