@@ -1,5 +1,8 @@
 # tabbar
 
+## 封装了一个tab-bar组件
++ 深化了slot的使用
+
 ## Project setup
 ```
 npm install
