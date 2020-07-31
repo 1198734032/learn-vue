@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2546613",
+      "name": "雷阵雨",
+      "font_class": "leizhenyu",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "12777369",
+      "name": "晴",
+      "font_class": "qing",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "13840039",
+      "name": "多云",
+      "font_class": "duoyun",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "14186984",
+      "name": "阵雨",
+      "font_class": "zhenyu",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    }
+  ]
+}
